@@ -1,0 +1,144 @@
+import { useEffect, useState } from "react"
+import { addCommas, formatMoney } from "libs/parse"
+import styled from "styled-components"
+import { ExchangeRateTuple } from "@terra-money/terra.js"
+
+type SummaryItemProps = {
+  label: string
+  value: string
+  isCurrency: boolean
+  decimals: number
+  variation?: number
+}
+
+type SummaryProps = { data: SummaryItemProps[] }
+
+const Wrapper = styled.div`
+  width: 100%;
+  height: auto;
+  position: relative;
+  background-color: #ffffff24;
+  border-radius: 15px;
+  overflow: hidden;
+  @media screen and (max-width: ${({ theme }) => theme.breakpoint}) {
+    display: block;
+    height: 48px;
+    padding: 0;
+  }
+
+  &,
+  & * {
+    box-sizing: border-box;
+  }
+`
+
+const SummaryList = styled.div`
+  position: relative;
+  display: block;
+
+  padding: 13px 30px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* specify the minimum spacing here */
+  align-items: center;
+  text-align: center; /* add this line */
+  transition: top 0.5s ease-in-out;
+  font-size: 0;
+
+  @media screen and (max-width: ${({ theme }) => theme.breakpoint}) {
+    display: block;
+    height: 48px;
+    padding: 0;
+    align-items: center;
+  }
+`
+
+const SummaryItem = styled.div.attrs<SummaryItemProps>({})<SummaryItemProps>`
+  width: auto;
+  height: auto;
+  display: inline-block;
+  position: relative;
+
+  @media screen and (max-width: ${({ theme }) => theme.breakpoint}) {
+    display: block;
+    padding: 13px 13px;
+  }
+
+  & label {
+    font-size: 16px;
+    font-weight: 800;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #0d0d2b;
+    display: inline-block;
+    margin-right: 8px;
+    color: #C6C3C8;
+  }
+
+  & span {
+    font-size: 16px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #CD6141;
+  }
+
+  & .variation {
+    color: ${({ variation }) => ((variation || 0) > 0 ? "#08d9b9" : "#f15e7e")};
+  }
+`
+
+const Summary: React.FC<SummaryProps> = ({ data }) => {
+  const [currentShownIndex, setCurrentShownIndex] = useState(0)
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const count = data.length
+
+      setCurrentShownIndex((current) => {
+        current += 1
+        return current >= count ? 0 : current
+      })
+    }, 2000)
+
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId)
+      }
+    }
+  }, [data])
+
+  return (
+    <Wrapper>
+      <SummaryList style={{ top: `-${currentShownIndex * 100}%` }}>
+        {data.map((item) => (
+          <SummaryItem {...item} key={item.label}>
+            <label>{item.label}:</label>
+            {item.isCurrency
+              ? <span>${formatMoney(Number(item.value), Number(item.decimals), true)}</span> 
+              : <span> {addCommas(Number(Number(item.value).toFixed(Number(item.decimals))))}</span>}
+            {typeof item.variation === "number" && (
+              <span>
+                &nbsp;(
+                <span className="variation">
+                  {item.variation > 0 && "↑"}
+                  {item.variation < 0 && "↓"}
+                  {Math.abs(item.variation)}%
+                </span>
+                )
+              </span>
+            )}
+          </SummaryItem>
+        ))}
+      </SummaryList>
+    </Wrapper>
+  )
+}
+
+export default Summary

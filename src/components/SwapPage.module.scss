@@ -1,0 +1,30 @@
+@import "src/styles/mixins.module";
+@import "src/styles/variables.module";
+
+.article {
+  position: relative;
+  @include mobile {
+    padding: 0;
+  }
+}
+
+.header {
+  @include flex(space-between);
+  margin-bottom: 20px;
+}
+
+.title {
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.action {
+  @include mobile {
+    display: none;
+  }
+}
+
+.description {
+  margin-bottom: 30px;
+}

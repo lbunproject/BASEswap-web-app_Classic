@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="80"
+   height="80"
+   viewBox="0 0 25.653997 26.01017"
+   version="1.1"
+   id="svg1495"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="mining-icon2.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1497"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.75633418"
+     inkscape:cx="66.108344"
+     inkscape:cy="46.936924"
+     inkscape:window-width="1920"
+     inkscape:window-height="1057"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1492" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-87.572293,-136.01965)">
+    <path
+       class="st0"
+       d="m 101.57828,141.21029 c 2.0701,2.56752 3.07975,5.6007 2.94851,8.37776 -0.95673,-2.34526 -2.44263,-4.72228 -4.41325,-6.91091 l -0.660397,0.6604 c -0.07408,0.0741 -0.19685,0.0741 -0.270933,0 l -2.08915,-2.08915 c -0.07408,-0.0741 -0.07408,-0.19685 0,-0.27093 l 0.64135,-0.64135 c -2.245783,-1.94522 -4.66725,-3.3909 -7.040033,-4.28837 2.798233,-0.20955 5.88645,0.75565 8.508999,2.81728 l 0.287867,-0.28786 c 0.07408,-0.0741 0.19685,-0.0741 0.270933,0 l 2.089154,2.08915 c 0.0741,0.0741 0.0741,0.19685 0,0.27093 z m -3.566587,7.23265 v -0.85725 l 4.044947,0.4318 z m 1.801283,3.31681 -0.607483,-0.60748 3.166537,-2.55482 z m 11.417304,-8.29309 0.49106,1.06256 -5.25991,1.778 z m -4.12962,-3.07975 1.09855,0.40428 -2.46168,4.97628 z m 2.2098,7.82531 3.91583,2.42782 v 11.38978 H 93.018477 c 4.1148,-4.1148 9.745133,-5.42078 13.000563,-11.05747 1.23614,-2.14206 0.81704,-4.4323 3.29142,-2.76013 z m -12.297833,-6.30555 1.691216,1.69122 -9.091083,9.0932 c -0.465667,0.46566 -1.227667,0.46566 -1.691217,0 v 0 c -0.465666,-0.46567 -0.465666,-1.22767 0,-1.69122 z"
+       id="path1520"
+       style="stroke-width:0.211667;fill:#f9aa4b;fill-opacity:1" />
+  </g>
+  <style
+     type="text/css"
+     id="style1518">.st0{fill-rule:evenodd;clip-rule:evenodd;}</style>
+</svg>

@@ -1,0 +1,40 @@
+@import "src/styles/mixins.module";
+@import "src/styles/variables.module";
+
+.modal {
+  width: 100vw;
+  max-width: $modal-width;
+  outline: 0;
+  position: relative;
+
+  @include mobile {
+    margin: 0 auto;
+  }
+}
+
+.overlay {
+  @include flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: fade-out(#070a13, 0.2);
+  z-index: 6000;
+}
+
+.close {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  text-align: right;
+  z-index: 1;
+
+  @include mobile {
+    right: 16px;
+  }
+
+  span {
+    cursor: pointer;
+  }
+}

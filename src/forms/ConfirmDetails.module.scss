@@ -1,0 +1,79 @@
+@import "src/styles/mixins.module";
+@import "src/styles/variables.module";
+
+.item {
+  display: block;
+}
+
+.item:first-child {
+  border-top: 1px solid #b5b5b5;
+  margin-top: 36px;
+  padding-top: 4px;
+}
+
+.article {
+  @include flex;
+  align-items: center;
+}
+
+.title,
+.content {
+  flex: 1;
+  display: flex;
+}
+
+.title {
+  color: #5c5c5c;
+  font-size: 14px;
+}
+
+.content {
+  flex: 3;
+  display: inline-block;
+  color: #5c5c5c;
+  font-size: 14px;
+  text-align: right;
+  white-space: pre-line;
+  word-break: break-all;
+}
+
+.txhash {
+  flex: 3;
+  justify-content: flex-end;
+  color: #4360e5;
+  font-size: 14px;
+  line-height: 34px;
+  text-align: right;
+  white-space: pre-line;
+  word-break: break-all;
+}
+
+.content0 {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.content1 {
+  color: #5c5c5c;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: right;
+  white-space: pre-line;
+  word-break: break-all;
+  align-self: flex-end;
+}
+
+.content2 {
+  color: #5c5c5c;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: right;
+  white-space: pre-line;
+  word-break: break-all;
+  margin-left: 8px;
+  align-self: flex-end;
+}
+
+.result {
+  color: #5c5c5c;
+}

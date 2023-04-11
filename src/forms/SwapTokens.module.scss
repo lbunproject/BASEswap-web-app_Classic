@@ -1,0 +1,96 @@
+@import "src/styles/mixins.module";
+@import "src/styles/variables.module";
+
+.component {
+  @include flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 400px;
+  font-family: $font-family-swap;
+}
+
+/* search */
+.search {
+  @include flex(flex-start, stretch);
+  flex: none;
+  margin-bottom: 5px;
+
+  border: 1px solid $realblue;
+  border-radius: 5px;
+  height: 50px;
+
+  label {
+    @include flex;
+  }
+
+  i {
+    margin: 0 15px;
+  }
+
+  input {
+    flex: 1;
+    padding: 10px;
+  }
+  input::placeholder {
+    text-align: center;
+    color: $brown;
+  }
+}
+
+/* feedback */
+.feedback {
+  text-align: center;
+}
+
+/* assets */
+.list {
+  flex: 1;
+  margin: 0;
+  overflow-y: scroll;
+}
+
+.button {
+  padding: 12px 0;
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+
+  &:not(.disabled):hover {
+    background-color: $semiblue;
+  }
+
+  &.disabled {
+    opacity: 0.3;
+  }
+
+  &.selected {
+    background-color: $semiblue;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0%;
+      width: 4px;
+      height: 100%;
+      background-color: $realblue;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: lightgray;
+}
+::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}

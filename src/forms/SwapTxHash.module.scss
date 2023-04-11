@@ -1,0 +1,6 @@
+@import "src/styles/mixins.module";
+
+.link {
+  @include link(inherit, inherit);
+  text-decoration: underline;
+}

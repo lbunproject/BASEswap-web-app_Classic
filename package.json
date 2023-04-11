@@ -1,0 +1,102 @@
+{
+  "name": "lbunswap-web-app",
+  "version": "1.0.0",
+  "homepage": "https://baseswap.netlify.app/",
+  "repository": "https://github.com/lbunproject/LBUNswap-web-app_Classic",
+  "author": "LBUN Project Team <lbunproject@gmail.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@apollo/client": "^3.2.4",
+    "@terra-dev/wallet-types": "^3.7.0",
+    "@terra-money/log-finder": "^1.1.6",
+    "@terra-money/log-finder-ruleset": "^3.0.0",
+    "@terra-money/react-base-components": "^2.0.0",
+    "@terra-money/terra.js": "3.0.8",
+    "@terra-money/wallet-provider": "^3.9.3",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.8",
+    "@tippyjs/react": "^4.2.0",
+    "@types/chart.js": "^2.9.34",
+    "@types/classnames": "^2.2.10",
+    "@types/jest": "^26.0.14",
+    "@types/lodash": "^4.14.176",
+    "@types/node": "^14.11.10",
+    "@types/numeral": "^0.0.28",
+    "@types/ramda": "^0.27.29",
+    "@types/react": "^18.0.8",
+    "@types/react-dom": "^18.0.3",
+    "@types/react-modal": "^3.13.1",
+    "@types/react-table": "^7.7.11",
+    "@types/react-window": "^1.8.5",
+    "axios": "^0.21.1",
+    "axios-cache-adapter": "^2.7.3",
+    "bignumber.js": "^9.0.1",
+    "buffer": "^6.0.3",
+    "chart.js": "^2.9.4",
+    "classnames": "^2.2.6",
+    "create-react-app": "^5.0.1",
+    "graphql": "^15.3.0",
+    "http-proxy-middleware": "^2.0.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.2",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "node-polyfill-webpack-plugin": "^1.1.4",
+    "node-sass": "^7.0.1",
+    "numeral": "^2.0.6",
+    "prettier": "^2.1.2",
+    "querystring": "^0.2.1",
+    "ramda": "^0.27.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-hook-form": "^7.1.1",
+    "react-modal": "^3.15.1",
+    "react-query": "^3.34.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "^5.0.1",
+    "react-table": "^7.7.0",
+    "react-window": "^1.8.7",
+    "source-map-explorer": "^2.5.0",
+    "stream-browserify": "^3.0.0",
+    "styled-components": "^5.3.5",
+    "typescript": "^4.4.2"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "analyze": "source-map-explorer 'build/static/js/*.js'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --no-semi --write"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.1.25",
+    "@typescript-eslint/eslint-plugin": "^5.22.0",
+    "@typescript-eslint/parser": "^5.22.0",
+    "react-app-rewired": "^2.2.1"
+  },
+  "engines": {
+    "node": ">=17 <18"
+  }
+}
