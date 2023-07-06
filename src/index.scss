@@ -18,7 +18,7 @@ body {
   padding-bottom: $footer-height;
   //background-attachment: fixed;
   //background-image: url("images/img-background_b.png") !important;
-  background-color: #00023D;
+  background-color: #00023d;
 
   *::-webkit-scrollbar {
     width: 6px;
@@ -56,7 +56,6 @@ body {
   background-repeat: no-repeat;
   background-position: 50% calc(100% + 180px);
   background-size: cover;
-
 }
 
 #basement {
@@ -105,11 +104,7 @@ $loading_duration: 1.4s;
   }
 }
 
-
-
 //*******************************************************************************************
-
-
 
 * {
   margin: 0px;
@@ -142,7 +137,6 @@ $loading_duration: 1.4s;
 .main-header-navbar__logo {
   width: 100%;
   justify-content: center;
-
 }
 .main-header-navbar__login {
   order: 1;
@@ -186,7 +180,7 @@ $loading_duration: 1.4s;
 }
 .main-header-navbar__login__register-btn:active {
   transform: scale(0.95);
-  background-color: #0222BA;
+  background-color: #0222ba;
 }
 .main-header-navbar__nav {
   margin-top: 15px;
@@ -210,9 +204,8 @@ $loading_duration: 1.4s;
   transition: color 0.3s ease-in;
 }
 .main-header-navbar__nav__link:hover {
-  color: #000033;
+  color: #cc4c00;
   font-weight: 800;
-
 }
 .main-header-navbar__nav__link:active {
   color: #fbc17c;
@@ -228,18 +221,18 @@ $loading_duration: 1.4s;
 }
 .main-header-content-principal__title {
   margin-top: 10px;
-  font-size: 3rem;
-  color: #000033;
+  font-size: 4rem;
+  color: #f0f0f0;
 }
 .main-header-content-principal__title span {
-  color:  #FFFFFF;
-  font-size: 3rem;
+  color: #cc4c00;
+  font-size: 4rem;
 }
 .main-header-content-principal__description {
   font-size: 1.6rem;
   margin: 0px;
   font-weight: 800;
-  color: #000033;
+  color: #f0f0f0;
   text-align: left;
   justify-content: left;
 }
@@ -339,7 +332,7 @@ $loading_duration: 1.4s;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  color: #0d0d2b;
+  color: #cc4c00;
 }
 .main-content .why-us-wrapper .stats-section__reference {
   width: 50%;
@@ -361,7 +354,6 @@ $loading_duration: 1.4s;
 .main-content .why-us-wrapper .stats-section__reference__title {
   font-size: 2.5rem;
   margin: 15px auto;
-  
 }
 .main-content .why-us-wrapper .stats-section__reference__description {
   font-size: 1.4rem;
@@ -371,7 +363,6 @@ $loading_duration: 1.4s;
   width: 80%;
   max-width: 400px;
   margin-bottom: 75px;
-  
 }
 .main-content .why-us-wrapper .why-us-section__content {
   width: 100%;
@@ -379,10 +370,10 @@ $loading_duration: 1.4s;
 }
 .main-content .why-us-wrapper .why-us-section__content__title {
   font-size: 2.5rem;
-  color: #0d0d2b;
+  color: #f0f0f0;
 }
 .main-content .why-us-wrapper .why-us-section__content__title span {
-  color:  #FFFFFF;
+  color: #cc4c00;
 }
 .main-content .why-us-wrapper .why-us-section__content__description {
   font-size: 1.4rem;
@@ -393,7 +384,7 @@ $loading_duration: 1.4s;
 .main-content .why-us-wrapper .why-us-section__content__btn {
   width: 150px;
   padding: 9px 10px;
-  background-color: #DE4721;
+  background-color: #de4721;
   color: #fff;
   border-radius: 25px;
   display: inline-block;
@@ -419,24 +410,24 @@ $loading_duration: 1.4s;
 .main-content .why-us-wrapper .benefits-section {
   width: 80%;
   text-align: center;
-  color: #0d0d2b;
+  color: #cc4c00;
 }
 .main-content .why-us-wrapper .benefits-section__title {
   font-size: 2.5rem;
 }
 .main-content .why-us-wrapper .benefits-section__title span {
-  color:  #FFFFFF;
+  color: #ffffff;
 }
 .main-content .why-us-wrapper .benefits-section__description {
   font-size: 1.4rem;
   margin-top: 30px;
-  color:  #FFFFFF;
+  color: #cc4c00;
 }
 .main-content .why-us-wrapper .benefits-section .card-info {
   width: 100%;
   max-width: 400px;
   background-color: #fff;
-  color: #000;
+  color: #cc4c00;
   border-radius: 10px;
   padding: 25px 15px;
   transform: translateY(50%);
@@ -453,7 +444,7 @@ $loading_duration: 1.4s;
   margin: 15px auto;
 }
 .main-content .why-us-wrapper .benefits-section .card-info__description span {
-  color:  #FFFFFF;
+  color: #cc4c00;
 }
 .main-content .why-us-wrapper .benefits-section .card-info__advice {
   font-size: 1rem;
@@ -467,7 +458,7 @@ $loading_duration: 1.4s;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color:  #FFFFFF;
+  color: #ffffff;
 }
 .main-content .cryptocurrencies-section__title {
   font-size: 2.4rem;
@@ -482,7 +473,6 @@ $loading_duration: 1.4s;
   flex-flow: row wrap;
   justify-content: space-evenly;
   align-items: center;
-  
 }
 .main-content
   .cryptocurrencies-section
@@ -498,7 +488,8 @@ $loading_duration: 1.4s;
   margin-bottom: 50px;
   border-radius: 20px;
   background-color: #0d0d2b;
-  box-shadow: 0px 5px 5px rgba(139, 35, 35, 0.3), 1px -1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 5px 5px rgba(139, 35, 35, 0.3),
+    1px -1px 2px rgba(0, 0, 0, 0.4);
   cursor: pointer;
   transition: all 0.3s ease-in;
 }
@@ -506,7 +497,7 @@ $loading_duration: 1.4s;
   .cryptocurrencies-section
   .cryptocurrencies-info-cards
   .info-card:hover {
-  background-color: #00006B;
+  background-color: #00006b;
   color: #fff;
   transform: scale(1.05);
 }
@@ -580,7 +571,7 @@ $loading_duration: 1.4s;
   .info-card__btn {
   width: 150px;
   padding: 9px 10px;
-  background-color: #DE4721;
+  background-color: #de4721;
   color: #fff;
   border-radius: 25px;
   display: inline-block;
@@ -594,9 +585,8 @@ $loading_duration: 1.4s;
   .cryptocurrencies-section
   .cryptocurrencies-info-cards
   .info-card__btn:hover {
-    background-color: #0d0d2b;;
-  }
-
+  background-color: #0d0d2b;
+}
 
 .main-content
   .cryptocurrencies-section
@@ -624,7 +614,7 @@ $loading_duration: 1.4s;
   width: 90%;
   max-width: 600px;
   margin-bottom: 20px;
-  color: #0d0d2b;
+  color: #cc4c00;
 }
 .main-content .features-section .invest-smart-article,
 .main-content .features-section .grow-profit-article,
@@ -646,7 +636,6 @@ $loading_duration: 1.4s;
 }
 .main-content .features-section .invest-smart-article__content__title {
   font-size: 2rem;
-  
 }
 .main-content .features-section .invest-smart-article__content__description {
   font-size: 1.4rem;
@@ -685,7 +674,7 @@ $loading_duration: 1.4s;
 }
 .main-content .features-section .detailed-stats-article__content__title {
   font-size: 2rem;
-  color: #0d0d2b;
+  color: #cc4c00;
 }
 .main-content .features-section .detailed-stats-article__content__description {
   font-size: 1.4rem;
@@ -728,7 +717,7 @@ $loading_duration: 1.4s;
 .main-content .features-section .grow-profit-article__content__description {
   font-size: 1.4rem;
   width: 100%;
-  margin: 20px ;
+  margin: 20px;
   text-align: left;
   justify-content: left;
 }
@@ -763,7 +752,7 @@ $loading_duration: 1.4s;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color:  #FFFFFF;
+  color: #ffffff;
 }
 .main-content .team-section__title {
   font-size: 2.4rem;
@@ -778,12 +767,8 @@ $loading_duration: 1.4s;
   flex-flow: row wrap;
   justify-content: space-evenly;
   align-items: center;
-  
 }
-.main-content
-  .team-section
-  .team-info-cards
-  .info-card {
+.main-content .team-section .team-info-cards .info-card {
   width: 100%;
   max-width: 290px;
   display: flex;
@@ -794,82 +779,52 @@ $loading_duration: 1.4s;
   margin-bottom: 50px;
   border-radius: 20px;
   background-color: #0d0d2b;
-  box-shadow: 0px 5px 5px rgba(139, 35, 35, 0.3), 1px -1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 5px 5px rgba(139, 35, 35, 0.3),
+    1px -1px 2px rgba(0, 0, 0, 0.4);
   cursor: pointer;
   transition: all 0.3s ease-in;
 }
 
-.main-content
-  .team-section
-  .team-info-cards
-  .info-card
-  .info-card__icon {
-    max-width: 80%;
-    max-height: auto;
-  }
+.main-content .team-section .team-info-cards .info-card .info-card__icon {
+  max-width: 80%;
+  max-height: auto;
+}
 
-.main-content
-  .team-section
-  .team-info-cards
-  .info-card:hover {
-  background-color: #00006B;
+.main-content .team-section .team-info-cards .info-card:hover {
+  background-color: #00006b;
   color: #fff;
-  transform: scale(1.10);
+  transform: scale(1.1);
 }
-.main-content
-  .team-section
-  .team-info-cards
-  .info-card:hover
-  p {
+.main-content .team-section .team-info-cards .info-card:hover p {
   color: #fff;
 }
-.main-content
-  .team-section
-  .team-info-cards
-  .info-card:active {
+.main-content .team-section .team-info-cards .info-card:active {
   transform: scale(0.95);
   background-color: #4808bd;
 }
-.main-content
-  .team-section
-  .team-info-cards
-  .info-card
-  .fab {
+.main-content .team-section .team-info-cards .info-card .fab {
   font-size: 80px;
 }
 
-.main-content
-  .team-section
-  .team-info-cards
-  .info-card__title {
+.main-content .team-section .team-info-cards .info-card__title {
   width: 100%;
   font-size: 2rem;
   margin: 30px auto 20px;
 }
-.main-content
-  .team-section
-  .team-info-cards
-  .info-card__title
-  span {
+.main-content .team-section .team-info-cards .info-card__title span {
   font-size: 1rem;
   font-weight: 400;
   color: #979797;
 }
-.main-content
-  .team-section
-  .team-info-cards
-  .info-card__description {
+.main-content .team-section .team-info-cards .info-card__description {
   font-size: 1.4rem;
   width: 70%;
   color: #fff;
 }
 
-.main-content
-  .team-section
-  .team-info-cards
-  .info-card__btn:hover {
-    background-color: #0d0d2b;;
-  }
+.main-content .team-section .team-info-cards .info-card__btn:hover {
+  background-color: #0d0d2b;
+}
 
 .cta-section {
   width: 80%;
@@ -952,12 +907,11 @@ $loading_duration: 1.4s;
 }
 .main-footer {
   width: 100%;
-  background-color: #2A2E2C;
+  background-color: #2a2e2c;
 }
 .main-footer__logo {
   width: 300px;
   margin-bottom: 35px;
-
 }
 .main-footer-navbar {
   width: 100%;
@@ -1040,7 +994,7 @@ $loading_duration: 1.4s;
   font-size: 2.4rem;
   text-align: center;
   margin-bottom: 30px;
-  color: #DE4721;
+  color: #de4721;
 }
 .main-footer .social-section-icons {
   width: 45%;
@@ -1115,20 +1069,20 @@ $loading_duration: 1.4s;
   }
 
   .main-header {
-    width: 90%;
+    width: 100%;
+    margin-right: 10px;
+    margin-left: 10px;
     margin-bottom: 10px;
   }
 
   .main-header-navbar {
-    text-align: left;
+    text-align: center;
     font-size: 10px;
-
   }
   .main-header-navbar__nav {
-
     margin-top: 0;
     order: 1;
-  } 
+  }
   .main-header-navbar__login {
     width: 30%;
   }
@@ -1143,10 +1097,10 @@ $loading_duration: 1.4s;
     text-align: left;
   }
 
-  .main-header-content-principal__title{
+  .main-header-content-principal__title {
     margin-top: 10px;
   }
-  
+
   .main-header-content-principal__illustration {
     display: flex;
     width: 60%;
@@ -1167,8 +1121,6 @@ $loading_duration: 1.4s;
     margin-bottom: 0;
     height: 260px;
   }
-
-
 
   .main-content .why-us-wrapper .why-us-section {
     margin-top: 20px;
@@ -1218,9 +1170,9 @@ $loading_duration: 1.4s;
   .main-content .features-section {
     width: 100%;
   }
-  
+
   .main-content .features-section__title {
-    font-size: 3rem;
+    font-size: 4rem;
     max-width: 580px;
   }
   .main-content .features-section .invest-smart-article__content {
@@ -1231,7 +1183,6 @@ $loading_duration: 1.4s;
   }
   .main-content .features-section .invest-smart-article__content__title {
     font-size: 2.6rem;
-
   }
   .main-content .features-section .invest-smart-article__content__description {
     margin: 25px 0;
@@ -1271,7 +1222,8 @@ $loading_duration: 1.4s;
     font-size: 2.6rem;
   }
   .main-content .features-section .grow-profit-article__content__description {
-    margin: 0 0;
+    margin: 0;
+    padding: 30px;
   }
   .main-content .features-section .grow-profit-article__graphic {
     width: 55%;
@@ -1325,7 +1277,6 @@ $loading_duration: 1.4s;
     justify-content: space-between;
   }
 }
-
 
 @media screen and (min-width: 681px) {
   .main-container {

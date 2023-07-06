@@ -1,4 +1,10 @@
-import { useState, useMemo, ReactElement, useEffect } from "react"
+import {
+  useState,
+  useMemo,
+  ReactElement,
+  useEffect,
+  useLayoutEffect,
+} from "react"
 import styled from "styled-components"
 import { useQuery } from "react-query"
 import { Link, useNavigate } from "react-router-dom"
@@ -16,7 +22,7 @@ import Select from "components/Select"
 import container from "components/Container"
 
 import Summary from "./Summary"
-import { Data } from "./Data"
+//import { Data } from "./Data"
 import LatestBlock from "components/LatestBlock"
 import Tooltip from "components/Tooltip"
 import Loading from "components/Loading"
@@ -120,8 +126,7 @@ const Dashboard = () => {
     api.pairs.list
   )
 
-  const chart = Data.map((data) => data)
-  const [selectedVolumeLength, setSelectedVolumeLength] = useState(3)
+  const [selectedVolumeLength, setSelectedVolumeLength] = useState(7)
   const [selectedLiquidityLength, setSelectedLiquidityLength] = useState(7)
 
   const [autoRefreshTicker, setAutoRefreshTicker] = useState(false)
@@ -132,6 +137,15 @@ const Dashboard = () => {
   let [taxCollected, setTaxCollected] = useState(0)
   let [luna1Price, setLuna1Price] = useState(0)
   let [luna2Price, setLuna2Price] = useState(0)
+  let [refreshKey, setRefreshKey] = useState(0)
+  let [chartPoints, setChartPoints] = useState(0)
+
+  const { data: chart } = useQuery("baseswap_price", async () => {
+    const timeNow = new Date(new Date().getTime())
+    const res = await api.baseswap_price.getChartData()
+    setChartPoints(res.length)
+    return res
+  })
 
   useEffect(() => {
     const timerId = setInterval(() => {
@@ -142,23 +156,23 @@ const Dashboard = () => {
     return () => {
       clearInterval(timerId)
     }
-  }, [autoRefreshTicker])
+  }, [autoRefreshTicker, luna1Price, chart])
 
   useEffect(() => {
     const url =
-      "https://terra-classic-lcd.publicnode.com/wasm/contracts/terra14tfl8s9ag200r5slncgyzqv9dyq3dl0zu73afg/store?query_msg=%7B%22curve_info%22:%7B%7D%7D"
+      "https://lcd-terra.synergynodes.com/cosmwasm/wasm/v1/contract/terra1uewxz67jhhhs2tj97pfm2egtk7zqxuhenm4y4m/smart/eyJjdXJ2ZV9pbmZvIjp7fX0="
     fetch(url)
       .then((response) => response.text())
       .then((text) => {
         console.log(text)
         const tbcData = JSON.parse(text)
-        setCurrentSupply(Number(tbcData.result.supply) / 1000000)
-        setCurrentPrice(Number(tbcData.result.spot_price)/ 1000000)
-        setCurrentReserve(Number(tbcData.result.reserve) / 1000000)
-        setTaxCollected(Number(tbcData.result.tax_collected) / 1000000)
+        setCurrentSupply(Number(tbcData.data.supply) / 1000000)
+        setCurrentPrice(Number(tbcData.data.spot_price) / 1000000)
+        setCurrentReserve(Number(tbcData.data.reserve) / 1000000)
+        setTaxCollected(Number(tbcData.data.tax_collected) / 1000000)
       })
 
-      console.log(currentPrice);
+    console.log(currentPrice)
 
     const url2 =
       "https://api.coingecko.com/api/v3/simple/price?ids=terra-luna-2&vs_currencies=usd"
@@ -180,22 +194,29 @@ const Dashboard = () => {
         setLuna1Price(Number(apiCoinGeckoLunc["terra-luna"]["usd"]))
       })
 
+    //handleRefresh();
     return
   }, [autoRefreshTicker])
 
   const selectedVolumeChart = useMemo(() => {
-    if (luna1Price > 0) {
-      const timeNow = new Date(new Date().getTime()).toISOString()
+    if (currentPrice != 0 && luna1Price != 0 && chart != undefined) {
+      const timeNow = new Date(new Date().getTime())
+      if (chart?.length == chartPoints + 1) {
+        chart.shift()
+      }
+
       chart.splice(0, 0, {
-        timestamp: String(timeNow),
-        volumeUst: (currentPrice * luna1Price * 1000000).toFixed(2).toString(),
-        liquidityUst: "14259822",
+        timestamp: timeNow,
+        volumeUst: (currentPrice * luna1Price * 1000000 * 1.053)
+          .toFixed(6)
+          .toString(),
+        liquidityUst: (currentPrice * 1000000 * 1.053).toFixed(6).toString(),
       })
     }
 
-    return (chart || []).slice(0, selectedVolumeLength * 24)
-  }, [chart, selectedVolumeLength]) //chart,
-  
+    return (chart || []).slice(0, selectedVolumeLength * 6)
+  }, [chart, selectedVolumeLength, luna1Price, autoRefreshTicker])
+
   const topLiquidity = useMemo(() => {
     return undefined //do not use api
   }, [pairs])
@@ -214,6 +235,11 @@ const Dashboard = () => {
 
   const dataForChild = [currentPrice * luna1Price, currentSupply]
 
+  // Function to handle the refresh event
+  const handleRefresh = () => {
+    setRefreshKey((prevKey) => prevKey + 1)
+  }
+
   return (
     <Wrapper>
       <Container>
@@ -224,44 +250,49 @@ const Dashboard = () => {
         <Summary
           data={[
             {
+              label: "BASE / USD",
+              value: (currentPrice * luna1Price).toString(),
+              isCurrency: true,
+              decimals: 6,
+            },
+            {
+              label: "BASE / USD  (w/Tax)",
+              value: (currentPrice * luna1Price * 1.053).toString(),
+              isCurrency: true,
+              decimals: 6,
+            },
+            {
+              label: "BASE / LUNC",
+              value: ((currentPrice * luna1Price) / luna1Price).toString(),
+              isCurrency: false,
+              decimals: 6,
+            },
+            {
+              label: "BASE / LUNC (w/Tax)",
+              value: (
+                ((currentPrice * luna1Price) / luna1Price) *
+                1.053
+              ).toString(),
+              isCurrency: false,
+              decimals: 6,
+            },
+            {
               label: "LUNC / USD",
               value: luna1Price.toString(),
               isCurrency: true,
               decimals: 6,
             },
-            {
-              label: "BASE / USD",
-              value: ((currentPrice * luna1Price)) .toString(),
-              isCurrency: true,
-              decimals: 9,
-            },
-            {
-              label: "BASE / LUNC",
-              value: ((currentPrice * luna1Price)/luna1Price) .toString(),
-              isCurrency: false,
-              decimals: 6,
-            },
             /*{
-              label: "Circulating Supply",
-              value: `${currentSupply}`,
-              isCurrency: false,
-              decimals: 6,
-            },
-            {
-              label: "LUNC Reserve",
-              value: (currentReserve).toString(),
-              isCurrency: false,
-              decimals: 2,
-            },
-            {
-              label: "Market Cap",
-              value: (currentSupply * currentPrice * luna2Price).toString(),
+              label: "Tax Collected",
+              //value: `${taxCollected * luna2Price}`,
+              value: `{taxCollected}`,
               isCurrency: true,
               decimals: 2,
-            }, */
+            },*/
           ]}
         />
 
+        {/*Uncomment to see charts rbh */}
         <Row>
           <Card className="left">
             <Row
@@ -281,7 +312,7 @@ const Dashboard = () => {
                     setSelectedVolumeLength(parseInt(e?.target?.value, 10))
                   }
                 >
-                  {[14, 7, 3, 1].map((value) => (
+                  {[45, 30, 14, 7, 3].map((value) => (
                     <option key={value} value={value}>
                       {value} days
                     </option>
@@ -297,10 +328,11 @@ const Dashboard = () => {
                 color: "#0d0d2b",
               }}
             >
-              ${(currentPrice * luna1Price).toFixed(9)}
+              ${(currentPrice * luna1Price * 1.053).toFixed(6)}
               &nbsp;USD
             </div>
             <Chart
+              key={refreshKey}
               type="line"
               height={178}
               data={selectedVolumeChart?.map((volume) => {
@@ -311,8 +343,45 @@ const Dashboard = () => {
               })}
             />
           </Card>
+
+          <Card className="right">
+            <Row
+              style={{
+                marginBottom: 10,
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <div style={{ flex: "unset", fontSize: 18, color: "#0d0d2b" }}>
+                <b>BASE Price</b>
+              </div>
+            </Row>
+            <div
+              style={{
+                fontSize: 18,
+                fontWeight: 700,
+                marginBottom: 14,
+                color: "#0d0d2b",
+              }}
+            >
+              {(currentPrice * 1.053).toFixed(6)}
+              &nbsp;LUNC
+            </div>
+
+            <Chart
+              key={refreshKey}
+              type="line"
+              height={178}
+              data={selectedVolumeChart?.map((volume) => {
+                return {
+                  t: new Date(volume.timestamp),
+                  y: Number(lookup(volume.liquidityUst, UST)),
+                }
+              })}
+            />
+          </Card>
         </Row>
-        <Summary
+        {/*<Summary
           data={[
             {
               label: "Dev Donations",
@@ -342,7 +411,7 @@ const Dashboard = () => {
               decimals: 2,
             },
           ]}
-        />
+        />*/}
 
         <AboutWebsiteMain
           priceFromParent={dataForChild[0]}
@@ -351,7 +420,11 @@ const Dashboard = () => {
 
         <Footer>
           <span>DASHBOARD IS FOR REFERENCE PURPOSES ONLY</span>
-
+          <br></br>
+          <span style={{ fontSize: "18px" }}>
+            Multisig Wallet terra1sa86238scylhgajefgpl887hjyq4jf3u5ctl64
+          </span>
+          <br></br>
           <a
             className="main-header-navbar__nav__link"
             href="mailto: lbunproject@gmail.com"

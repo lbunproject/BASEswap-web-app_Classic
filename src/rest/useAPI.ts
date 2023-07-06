@@ -37,7 +37,7 @@ interface DenomInfo {
 
 interface ContractBalanceResponse {
   height: string
-  result: ContractBalance
+  data: ContractBalance
 }
 
 interface ContractBalance {
@@ -184,7 +184,7 @@ const useAPI = (version: ApiVersion = "v2") => {
     async (localContractAddr: string) => {
       const url = getURL(localContractAddr, { balance: { address: address } })
       const res: ContractBalanceResponse = (await axios.get(url)).data
-      return res.result
+      return res
     },
     [address, getURL]
   )
@@ -361,6 +361,7 @@ const useAPI = (version: ApiVersion = "v2") => {
             sender: string
           }
     ) => {
+      return null
       const { type, ...params } = query
       const url = `${apiHost}/tx/${type}`.toLowerCase()
       const res = (await axios.get(url, { params })).data
@@ -368,8 +369,8 @@ const useAPI = (version: ApiVersion = "v2") => {
         (data: MsgExecuteContract.Amino | MsgExecuteContract.Amino[]) => {
           return (Array.isArray(data) ? data : [data]).map(
             (item: MsgExecuteContract.Amino) => {
-              const execute_msg = item?.value?.execute_msg as any
-              if (
+              //const execute_msg = item?.value?.execute_msg as any
+              /*if (
                 execute_msg?.provide_liquidity &&
                 !execute_msg?.provide_liquidity?.slippage_tolerance
               ) {
@@ -380,8 +381,8 @@ const useAPI = (version: ApiVersion = "v2") => {
                 item?.value?.contract,
                 execute_msg,
                 Coins.fromAmino(item?.value?.coins)
-              )
-              return result
+              ) */
+              //return result
             }
           )
         }

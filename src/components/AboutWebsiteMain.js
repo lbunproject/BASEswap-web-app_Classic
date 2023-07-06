@@ -36,9 +36,6 @@ const AboutWebsiteMain = ({ priceFromParent, supplyFromParent }) => {
               <br></br>
               Burning LUNC for fun and profit...
               <br></br>
-              and donating 75% of TX fees
-              <br></br>
-              to Devs, Burns and Raffles!
             </p>
           </div>
           <img
@@ -52,25 +49,23 @@ const AboutWebsiteMain = ({ priceFromParent, supplyFromParent }) => {
           <div className="stats-section">
             <div className="stats-section__reference">
               <i className="fas fa-fire"></i>
-              <h3 className="stats-section__reference__title">
-                Goal 50 Billion
-              </h3>
+              <h3 className="stats-section__reference__title">5M+</h3>
               <p className="stats-section__reference__description">
                 LUNC Burned
               </p>
             </div>
             <div className="stats-section__reference">
               <i className="fas fa-wallet"></i>
-              <h3 className="stats-section__reference__title">24</h3>
-              <p className="stats-section__reference__description">
-                Community Wallets
-              </p>
+              <h3 className="stats-section__reference__title">400+ Wallets</h3>
+              <p className="stats-section__reference__description">Holders</p>
             </div>
             <div className="stats-section__reference">
               <i className="fas fa-ticket-alt"></i>
-              <h3 className="stats-section__reference__title">$10M Possible</h3>
+              <h3 className="stats-section__reference__title">
+                4M BASE Tokens
+              </h3>
               <p className="stats-section__reference__description">
-                Raffle Winnings
+                Mining Rewards
               </p>
             </div>
           </div>
@@ -82,16 +77,16 @@ const AboutWebsiteMain = ({ priceFromParent, supplyFromParent }) => {
                 ${priceFromParent.toFixed(4)} USD
               </h3>
               <p className="stats-section__reference__description">
-               BASE Price
+                BASE Price
               </p>
             </div>
             <div className="stats-section__reference">
               <i className="fas fa-coins"></i>
               <h3 className="stats-section__reference__title">
-                {supplyFromParent.toFixed(4)}
+                {(supplyFromParent / 1000000).toFixed(3)} Million
               </h3>
               <p className="stats-section__reference__description">
-               BASE Supply
+                BASE Supply
               </p>
             </div>
           </div>
@@ -110,7 +105,7 @@ const AboutWebsiteMain = ({ priceFromParent, supplyFromParent }) => {
               </p>
             </div>
             <img
-              src="\images\Token\LBUNC-min.svg"
+              src="/images/why-us-section-assets/LBUNC-min.svg"
               alt=""
               className="why-us-section__illustration"
             />
@@ -118,15 +113,15 @@ const AboutWebsiteMain = ({ priceFromParent, supplyFromParent }) => {
 
           <div className="benefits-section">
             <h2 className="benefits-section__title">
-              Participate in weekly <span>Raffles </span> to win rewards based
-              on buy & sell <span>transactions </span> durning that week!
+              Participate in <span>BASE token mining </span> to earn weekly
+              rewards based on <span>PoW </span> mining!
               <TooltipIcon content={Tooltip.Dashboard.Raffle}> *</TooltipIcon>
             </h2>
-            <p className="benefits-section__description">
+            {/*<p className="benefits-section__description">
               Must hold BASE in wallet (any amount), but odds of winning
               increase when more BASE is held.
               <TooltipIcon content={Tooltip.Dashboard.Odds}> *</TooltipIcon>
-            </p>
+            </p>*/}
           </div>
         </section>
 
@@ -149,7 +144,7 @@ const AboutWebsiteMain = ({ priceFromParent, supplyFromParent }) => {
                 Low fees, Fast Transactions
               </p>
               <a
-                href="https://finder.terra.money/classic/address/terra14tfl8s9ag200r5slncgyzqv9dyq3dl0zu73afg"
+                href="https://finder.terra.money/classic/address/terra1uewxz67jhhhs2tj97pfm2egtk7zqxuhenm4y4m"
                 className="info-card__btn"
               >
                 Explore <i className="fas fa-angle-right"></i>
@@ -203,16 +198,13 @@ const AboutWebsiteMain = ({ priceFromParent, supplyFromParent }) => {
                 LUNC Burning
               </h3>
               <p className="grow-profit-article__content__description">
-                1. Each transaction provides for a 1.2% burn
+                1. Each transaction provides for a 1.1% burn
                 <br></br>
                 <br></br>
-                2. Potential for $8M for burning LUNC @ 100K BASE supply
+                2. Burn conducted periodically with verification
                 <br></br>
                 <br></br>
-                3. Burn conducted weekly with verification
-                <br></br>
-                <br></br>
-                4. Community activity determines burn amount
+                3. Community activity determines burn amount
               </p>
             </div>
           </article>
@@ -220,19 +212,16 @@ const AboutWebsiteMain = ({ priceFromParent, supplyFromParent }) => {
           <article className="detailed-stats-article">
             <div className="detailed-stats-article__content">
               <h3 className="detailed-stats-article__content__title">
-                Raffle Prizes
+                Mining Rewards
               </h3>
               <p className="grow-profit-article__content__description">
-                1. Potential for $10M in prizes @ 100K BASE supply
+                1. Earn 20 BASE tokens for each block mined
                 <br></br>
                 <br></br>
-                2. Drawing conducted weekly (after LUNC burn)
+                2. Super low power multichain based CPU mining
                 <br></br>
                 <br></br>
-                3. Odds of winning set by amount of BASE in wallet
-                <br></br>
-                <br></br>
-                4. Prize size determined by community activity
+                3. Limited number of miners permitted
               </p>
             </div>
           </article>
@@ -250,9 +239,6 @@ const AboutWebsiteMain = ({ priceFromParent, supplyFromParent }) => {
                 <br></br>
                 <br></br>
                 3. BASE value determined solely by community
-                <br></br>
-                <br></br>
-                4. Uncapped market (limitless supply)
               </p>
             </div>
           </article>
@@ -270,9 +256,6 @@ const AboutWebsiteMain = ({ priceFromParent, supplyFromParent }) => {
                 <br></br>
                 <br></br>
                 3. Mature tooling for developing and testing smart contracts
-                <br></br>
-                <br></br>
-                4. Smart contracts run on multiple chains using the IBC protocol
               </p>
             </div>
           </article>
@@ -290,9 +273,6 @@ const AboutWebsiteMain = ({ priceFromParent, supplyFromParent }) => {
                 <br></br>
                 <br></br>
                 3. Built on Tendermint Core (BFT consensus engine)
-                <br></br>
-                <br></br>
-                4. Resilient and Resourceful Community
               </p>
             </div>
           </article>
@@ -309,20 +289,22 @@ const AboutWebsiteMain = ({ priceFromParent, supplyFromParent }) => {
                 alt=""
                 className="info-card__icon"
               />
-              <h3 className="info-card__title">Renzo</h3>
+              <h3 className="info-card__title">Renzo @LBUNProject</h3>
               <p className="info-card__description">
                 Lead Developer & Project Manager
               </p>
             </div>
             <div className="info-card">
               <img
-                src="/images/team/Eric.png"
+                src="/images/team/Juan.png"
                 alt=""
                 className="info-card__icon"
               />
-              <h3 className="info-card__title">Eric</h3>
+              <h3 className="info-card__title">
+                Juan E. Capilla (@CryptHomeLess)
+              </h3>
               <p className="info-card__description">
-                Junior Developer & Social Media Manager
+                Communications & Social Media Manager
               </p>
             </div>
             <div className="info-card">
@@ -331,7 +313,7 @@ const AboutWebsiteMain = ({ priceFromParent, supplyFromParent }) => {
                 alt=""
                 className="info-card__icon"
               />
-              <h3 className="info-card__title">David</h3>
+              <h3 className="info-card__title">David @davidagoebelt</h3>
               <p className="info-card__description">
                 LUNC Validator & Asst Project Manager
               </p>

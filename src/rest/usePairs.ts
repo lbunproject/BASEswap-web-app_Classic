@@ -91,14 +91,14 @@ export let tokenInfos: Map<string, TokenInfo> = new Map<string, TokenInfo>([
   ],
 ])
 
-tokenInfos.set("terra14tfl8s9ag200r5slncgyzqv9dyq3dl0zu73afg", {
-"name": "Burn and Stake Enterprise Token",
-"symbol": "BASE",
-"decimals": 6,
-"contract_addr": "terra14tfl8s9ag200r5slncgyzqv9dyq3dl0zu73afg",
-"icon": "https://raw.githubusercontent.com/lbunproject/LBUNswap-web-app_Classic/main/src/images/Token/LBUNC-min.svg",
-"verified": true
-}) 
+tokenInfos.set("terra1uewxz67jhhhs2tj97pfm2egtk7zqxuhenm4y4m", {
+  name: "Burn and Stake Enterprise Token",
+  symbol: "BASE",
+  decimals: 6,
+  contract_addr: "terra1uewxz67jhhhs2tj97pfm2egtk7zqxuhenm4y4m",
+  icon: "https://raw.githubusercontent.com/lbunproject/BASEswap-web-app_Classic/main/src/images/Token/LBUNC.svg",
+  verified: true,
+})
 
 export let lpTokenInfos: Map<string, TokenInfo[]> = new Map<
   string,

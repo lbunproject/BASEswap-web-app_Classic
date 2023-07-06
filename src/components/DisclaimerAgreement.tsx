@@ -73,25 +73,25 @@ const Disclaimer = () => {
         <div>
           <ModalTitle>Disclaimer</ModalTitle>
           <div>
-          LBUNswap is a decentralized exchange on Terra blockchain. Trading
-            on LBUNswap is at your own risk, without
-            warranties of any kind. Please read the&nbsp;
+            LBUNswap is a decentralized exchange on Terra blockchain. Trading on
+            BASEswap is at your own risk, without warranties of any kind. Please
+            read the&nbsp;
             <a
-              href="https://lbunpaperterra2.netlify.app/"
+              href="https://lbunproject.github.io/BASE_whitepaper_classic"
               target="_blank"
               rel="noopener noreferrer"
               style={{ fontWeight: 700 }}
             >
               document
             </a>
-            &nbsp;carefully and understand how LBUNswap works before using it.
+            &nbsp;carefully and understand how BASEswap works before using it.
           </div>
           <br />
           <div style={{ marginBottom: 30 }}>
-          I acknowledge and agree that I am responsible for various
-            losses of assets by making transactions on LBUNswap. The entities 
-			      involved in this site are not liable for any damages resulting from my use of
-            LBUNswap.
+            I acknowledge and agree that I am responsible for various losses of
+            assets by making transactions on BASEswap. The entities involved in
+            this site are not liable for any damages resulting from my use of
+            BASEswap.
           </div>
           <div
             style={{ textAlign: "center", padding: "0 26px", marginBottom: 30 }}

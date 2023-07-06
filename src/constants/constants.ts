@@ -99,7 +99,7 @@ export const socialMediaList = [
   {
     icon: iconGitHub,
     iconLight: iconGitHubLight,
-    href: "https://github.com/lbunproject/LBUNswap-web-app_Classic",
+    href: "https://github.com/lbunproject/BASE_tbc_classic",
     title: "GitHub",
   },
   {

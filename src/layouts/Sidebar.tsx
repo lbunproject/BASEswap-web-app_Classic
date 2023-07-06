@@ -43,7 +43,7 @@ const Wrapper = styled.div<{ isOpen: boolean }>`
     ${({ isOpen }) =>
       isOpen &&
       css`
-        top: 40px;
+        top: 0px;
         opacity: 1;
         transform: scale(1);
         transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out,
@@ -99,12 +99,12 @@ const NavLink = styled(navLink)`
 `
 
 const MobileButton = styled.button<{ isOpen?: boolean }>`
-  display: none;0
+  display: none;
   width: 32px;
   height: 32px;
   position: fixed;
   z-index: 5550;
-  top: 16px;
+  top: 30px;
   right: 16px;
   background-image: url("${({ isOpen }) => (isOpen ? iconClose : iconMenu)}");
   background-size: contain;
@@ -114,7 +114,6 @@ const MobileButton = styled.button<{ isOpen?: boolean }>`
     display: block;
   }
 `
-
 
 const SocialMediaList = styled.div<{ isOpen?: boolean }>`
   width: 100%;
@@ -147,7 +146,7 @@ const SocialMediaList = styled.div<{ isOpen?: boolean }>`
     ${({ isOpen }) =>
       isOpen &&
       css`
-        z-index: 5560;
+        z-index: 5590;
         opacity: 1;
         transition-delay: 0.25s;
         bottom: 48px;
@@ -167,19 +166,32 @@ const Sidebar = () => {
 
   return (
     <>
+      <MobileButton
+        isOpen={isOpen}
+        onClick={() => (!isOpen ? open() : close())}
+      />
       <Wrapper isOpen={isOpen}>
-      <div>
-          
+        <div>
           <NavLink
             to="/"
             className={location.pathname?.includes("/pairs") ? "active" : ""}
-            onClick={() => close()}>
+            onClick={() => close()}
+          >
             Project
           </NavLink>
 
           <NavLink to="/swap" onClick={() => close()}>
             Swap
           </NavLink>
+
+          <NavLink to="/affiliate" onClick={() => close()}>
+            Affiliate Link
+          </NavLink>
+
+          <NavLink to="/unstakestatus" onClick={() => close()}>
+            Unstake Status
+          </NavLink>
+
           <br></br>
           <div style={{ height: 25 }} />
           <ChangeVersionButton />

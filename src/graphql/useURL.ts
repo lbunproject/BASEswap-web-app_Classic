@@ -14,10 +14,13 @@ export default () => {
   const getUrl = useCallback(
     (contract: string, msg: string | object) => {
       const query_msg =
-        typeof msg === "string"
-          ? toQueryMsg(msg)
-          : encodeURIComponent(JSON.stringify(msg))
-      return `${fcd}/wasm/contracts/${contract}/store?query_msg=${query_msg}`
+        //typeof msg === "string"
+        //  ? toQueryMsg(btoa(msg))
+        //  : encodeURIComponent(JSON.stringify(msg))
+        btoa(JSON.stringify(msg))
+
+      //return `${fcd}/wasm/contracts/${contract}/store?query_msg=${query_msg}`
+      return `${fcd}/cosmwasm/wasm/v1/contract/${contract}/smart/${query_msg}`
     },
     [fcd]
   )

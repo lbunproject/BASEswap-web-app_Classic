@@ -23,22 +23,11 @@ const AboutWebsiteHeader = () => {
       <title>LUNC Burn Token</title>
       <header className="main-header">
         <div className="header-container">
-          <nav className="main-header-navbar">
-            <img
-              src="/images/header-assets/BASE_name.png"
-              alt="BASE logo"
-              className="main-header-navbar__logo"
-            />
-          </nav>
+          <nav className="main-header-navbar"></nav>
           <nav className="main-header-navbar">
             <ul className="main-header-navbar__nav">
               <li className="main-header-navbar__nav__item">
-                <a
-                  href="https://lbunproject.github.io/BASE_whitepaper_classic"
-                  className="main-header-navbar__nav__link"
-                >
-                  Whitepaper
-                </a>
+                <a href="https://basetokenswap.netlify.app/">BASE Token dApp</a>
               </li>
               <li className="main-header-navbar__nav__item">
                 <a href="#components" className="main-header-navbar__nav__link">

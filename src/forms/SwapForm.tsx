@@ -7,7 +7,13 @@ import TabView from "components/TabView"
 import { useSearchParams } from "react-router-dom"
 import { UST, DEFAULT_MAX_SPREAD, ULUNA } from "constants/constants"
 import { useNetwork, useContract, useAddress, useConnectModal } from "hooks"
-import { lookup, decimal, toAmount, findTokenInfoBySymbolOrContractAddr, formatMoney} from "libs/parse"
+import {
+  lookup,
+  decimal,
+  toAmount,
+  findTokenInfoBySymbolOrContractAddr,
+  formatMoney,
+} from "libs/parse"
 import calc from "helpers/calc"
 import { PriceKey, BalanceKey, AssetInfoKey } from "hooks/contractKeys"
 import Count from "components/Count"
@@ -27,7 +33,14 @@ import { TooltipIcon } from "components/Tooltip"
 import Tooltip from "lang/Tooltip.json"
 import useGasPrice from "rest/useGasPrice"
 import { hasTaxToken } from "helpers/token"
-import { Coin, Coins, CreateTxOptions, Fee, MsgSend, SignerInfo } from "@terra-money/terra.js"
+import {
+  Coin,
+  Coins,
+  CreateTxOptions,
+  Fee,
+  MsgSend,
+  SignerInfo,
+} from "@terra-money/terra.js"
 import { MsgExecuteContract } from "@terra-money/terra.js"
 import { Type } from "pages/Swap"
 import usePool from "rest/usePool"
@@ -88,16 +101,16 @@ const SwapForm = ({ type, tabs }: { type: Type; tabs: TabViewProps }) => {
   const [isWarningModalConfirmed, setIsWarningModalConfirmed] = useState(false)
   const warningModal = useModal()
 
-
   const [searchParams, setSearchParams] = useSearchParams()
   const from = searchParams.get("from") || ""
   const to = searchParams.get("to") || ""
+  const aff = searchParams.get("aff") || ""
 
   const tokenInfos = useTokenInfos()
   const lpTokenInfos = useLpTokenInfos()
   const taxRate = 0.048
   const { getSymbol, isNativeToken } = useContractsAddress()
-  const { loadTaxInfo, loadTaxRate, generateContractMessages } = useAPI()
+  const { loadTaxInfo, loadTaxRate } = useAPI()
   const { fee } = useNetwork()
   const { find } = useContract()
   const walletAddress = useAddress()
@@ -119,7 +132,6 @@ const SwapForm = ({ type, tabs }: { type: Type; tabs: TabViewProps }) => {
       ) / 100
     ).toFixed(3)}`
   }, [slippageSettings])
-
 
   const balanceKey = {
     [Type.SWAP]: BalanceKey.TOKEN,
@@ -162,10 +174,7 @@ const SwapForm = ({ type, tabs }: { type: Type; tabs: TabViewProps }) => {
       setTimeout(() => {
         searchParams.set("from", type === Type.WITHDRAW ? InitLP : ULUNA)
         // BASE/LUNC pair
-        searchParams.set(
-          "to",
-          "terra14tfl8s9ag200r5slncgyzqv9dyq3dl0zu73afg"
-        )
+        searchParams.set("to", "terra1uewxz67jhhhs2tj97pfm2egtk7zqxuhenm4y4m")
         setSearchParams(searchParams, { replace: true })
       }, 100)
     }
@@ -282,16 +291,20 @@ const SwapForm = ({ type, tabs }: { type: Type; tabs: TabViewProps }) => {
     to: to,
     amount: formData[Key.value1],
     type: formState.isSubmitted ? undefined : type,
+    affiliate: aff,
     slippageTolerance,
   })
 
   const [tax, setTax] = useState<Coins>(new Coins())
 
   const simulationContents = useMemo(() => {
-    if (isNaN(Number(formData[Key.value1])) || isNaN(Number(formData[Key.value2]))) {
+    if (
+      isNaN(Number(formData[Key.value1])) ||
+      isNaN(Number(formData[Key.value2]))
+    ) {
       return []
     }
- 
+
     const taxs = tax.filter((coin) => !coin.amount.equals(0))
 
     return [
@@ -305,7 +318,7 @@ const SwapForm = ({ type, tabs }: { type: Type; tabs: TabViewProps }) => {
             : `${decimal(
                 profitableQuery?.luncLbunPrice,
                 tokenInfo1?.decimals
-              )} ${formData[Key.symbol1]} = 1  ${formData[Key.symbol2]}`,
+              )} ${formData[Key.symbol2]} = 1  ${formData[Key.symbol1]}`,
       }),
       ...insertIf(type === Type.SWAP, {
         title: (
@@ -331,11 +344,7 @@ const SwapForm = ({ type, tabs }: { type: Type; tabs: TabViewProps }) => {
       }),
       {
         title: <TooltipIcon content={Tooltip.Swap.TxFee}>Tx Fee</TooltipIcon>,
-        content: (
-          <Count symbol="LUNC"> 
-            {lookup(formData[Key.feeValue])}
-          </Count>
-        ),
+        content: <Count symbol="LUNC">{lookup(formData[Key.feeValue])}</Count>,
       },
       ...insertIf(taxs.toArray().length > 0, {
         title: <TooltipIcon content={Tooltip.Swap.BurnFee}>Tax</TooltipIcon>,
@@ -613,10 +622,10 @@ const SwapForm = ({ type, tabs }: { type: Type; tabs: TabViewProps }) => {
             return
           }
           //get the Tx Msgs
-          msgs = [profitableQuery.msg];
+          msgs = [profitableQuery.msg]
         }
-       
-          console.log(msgs)
+
+        console.log(msgs)
 
         let txOptions: CreateTxOptions = {
           msgs,
@@ -631,21 +640,27 @@ const SwapForm = ({ type, tabs }: { type: Type; tabs: TabViewProps }) => {
 
         let fee = signMsg.auth_info.fee.amount.add(tax)
 
-        let biggerFee = new Coin( 'uluna', '0')
+        let biggerFee = new Coin("uluna", "0")
         //txOptions.fee = new Fee(signMsg.auth_info.fee.gas_limit, fee)
         //txOptions.fee = new Fee(500000, fee.add(fee)) //Setting gas limit to 500,000
-        if (formData[Key.symbol1]== "LUNC"){
-          biggerFee = new Coin( 'uluna', Math.floor(Number(fee.get('uluna')?.amount) * 2.0)) //100% bigger
-        }else{
-          biggerFee = new Coin( 'uluna', Math.floor(Number(fee.get('uluna')?.amount) * 3.0)) //200% bigger
+        if (formData[Key.symbol1] == "LUNC") {
+          biggerFee = new Coin(
+            "uluna",
+            Math.floor(Number(fee.get("uluna")?.amount) * 2.0)
+          ) //100% bigger
+        } else {
+          biggerFee = new Coin(
+            "uluna",
+            Math.floor(Number(fee.get("uluna")?.amount) * 3.0)
+          ) //200% bigger
         }
-        txOptions.fee = new Fee(500000, new Coins([biggerFee])) //Force gas_linit to 500,000
+        txOptions.fee = new Fee(500000, new Coins([biggerFee])) //Force gas_limit to 500,000
         setValue(
           Key.feeValue,
           txOptions.fee?.amount.get(feeAddress)?.amount.toString() || ""
         )
 
-         const extensionResult = await wallet.post(
+        const extensionResult = await wallet.post(
           {
             ...txOptions,
           },
@@ -672,7 +687,7 @@ const SwapForm = ({ type, tabs }: { type: Type; tabs: TabViewProps }) => {
       tokenInfo1,
       from,
       tokenInfo2,
-      to,				  
+      to,
     ]
   )
 
@@ -790,7 +805,14 @@ const SwapForm = ({ type, tabs }: { type: Type; tabs: TabViewProps }) => {
                         }
                         return true
                       })
+
                       let maxBalance = minus(formData[Key.max1], taxVal)
+
+                      //only allow 90% of actual LUNC maxBalance as a safety net
+                      if (formData[Key.symbol1] === "LUNC") {
+                        maxBalance = String(parseFloat(maxBalance) * 0.97)
+                      }
+
                       // fee
                       if (formData[Key.symbol1] === formData[Key.feeSymbol]) {
                         if (gte(maxBalance, formData[Key.feeValue])) {
@@ -885,13 +907,25 @@ const SwapForm = ({ type, tabs }: { type: Type; tabs: TabViewProps }) => {
             />
             <SwapConfirm list={simulationContents} />
             <div>
+              {formData[Key.symbol2] === "LUNC" ? (
+                <div
+                  style={{
+                    paddingTop: "20px",
+                  }}
+                >
+                  <p style={{ color: "#EE4B2B" }}>
+                    Swapping BASE for LUNC requires a 21-day unstaking period.
+                  </p>
+                </div>
+              ) : null}
+
               <div
                 style={{
                   paddingTop: "20px",
                 }}
               >
-                <p style={{color: "#000"}} >
-                The displayed number is the simulated result and can be
+                <p style={{ color: "#000" }}>
+                  The displayed number is the simulated result and can be
                   different from the actual swap rate. Trade at your own risk.
                 </p>
               </div>
@@ -902,7 +936,6 @@ const SwapForm = ({ type, tabs }: { type: Type; tabs: TabViewProps }) => {
                       loading: formState.isSubmitting,
                       disabled:
                         !formState.isValid ||
-
                         formState.isValidating ||
                         simulationContents?.length <= 0 ||
                         (type === Type.SWAP &&

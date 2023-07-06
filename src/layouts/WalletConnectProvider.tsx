@@ -53,6 +53,7 @@ export const useLCDClient = () => {
     URL: networkInfo?.lcd,
     chainID: network.chainID,
     gasAdjustment: 1.5,
+    isClassic: true,
   })
 
   return { terra }

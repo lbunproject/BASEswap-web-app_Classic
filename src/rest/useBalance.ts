@@ -40,7 +40,7 @@ export default (contractAddress: string, symbol: string) => {
       } else {
         loadContractBalance(contractAddress).then((tokenBalance) => {
           if (!isAborted) {
-            setBalance(tokenBalance?.balance || "")
+            setBalance(tokenBalance?.data.balance || "")
           }
         })
       }

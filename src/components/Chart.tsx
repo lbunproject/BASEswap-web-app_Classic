@@ -127,7 +127,7 @@ const getOptions = (
 ): ChartJS.ChartConfiguration => {
   /* Dataset Properties */
   const defaultProps = {
-    borderWidth: 1,
+    borderWidth: 3,
   }
 
   const props = {
@@ -153,11 +153,11 @@ const getOptions = (
       borderWidth: 0,
     },
     line: {
-      borderColor: "#0d0d2b",
-      pointBackgroundColor: "#f9aa4b",
+      borderColor: "#000230",
+      pointBackgroundColor: "#BCD2E8",
       pointRadius: 0,
       pointHoverRadius: 0,
-      backgroundColor: "#f9aa4b",
+      backgroundColor: "#0000FF",
       ...config.lineStyle,
     },
   }[type]
@@ -165,12 +165,12 @@ const getOptions = (
   /* Options */
   const defaultOptions = {
     responsive: true,
-    animation: { duration: 0 },
+    animation: { duration: 10 },
     legend: { display: false },
   }
 
   const tooltips: ChartTooltipOptions = {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#F0F0F0",
     titleFontColor: "#0d0d2b",
     bodyFontColor: "#0d0d2b",
     borderColor: "#0d0d2b",
@@ -224,7 +224,8 @@ const getOptions = (
         displayColors: false,
         callbacks: {
           title: ([{ value }]: ChartJS.ChartTooltipItem[]) =>
-            `$${formatMoney(Number(value), 2, true)}`,
+            `${formatMoney(Number(value), 6, true)}`,
+          //`$${formatMoney(Number(value), 6, true)}`,
           label: getLabel,
         },
       },
@@ -264,7 +265,8 @@ const getOptions = (
               fontColor: "#0d0d2b",
               fontSize: 11,
               callback(value: any) {
-                return `$${formatMoney(Number(value), 2, true)}`
+                return `${formatMoney(Number(value), 4, true)}`
+                //return `$${formatMoney(Number(value), 6, true)}`
               },
             },
             gridLines: { color: "#C3C3C399" },

@@ -79,7 +79,6 @@ export interface Transaction {
 }
 
 const useDashboardAPI = () => {
-
   const { dashboard: dashboardBaseUrl } = useNetwork()
 
   const api = useMemo(() => {
@@ -109,7 +108,7 @@ const useDashboardAPI = () => {
         },
       },
       pairs: {
-                async list() {
+        async list() {
           const res = await axios.get<Pair[]>(`${dashboardBaseUrl}/pairs`)
           if (Array.isArray(res?.data)) {
             return res.data
@@ -127,7 +126,6 @@ const useDashboardAPI = () => {
           throw Error("no data")
         },
         async getRecent(address: string) {
-          return ""
           const res = await axios.get<{ daily: Recent; weekly: Recent }>(
             `${dashboardBaseUrl}/pairs/${address}/recent`
           )
@@ -156,7 +154,35 @@ const useDashboardAPI = () => {
           throw Error("no data")
         },
       },
-    }
+      baseswap_price: {
+        async getChartData() {
+          const res = await axios.get<
+            { timestamp: Date; volumeUst: string; liquidityUst: string }[]
+          >(
+            "https://raw.githubusercontent.com/lbunproject/BASEswap-api-price/main/public/2wk_1hr.json"
+          )
+          if (Array.isArray(res?.data)) {
+            console.log(res.data)
+            return res.data
+          }
+          throw Error("no data")
+        },
+      },
+      baseswap_unstaked: {
+        async getChartData() {
+          const res = await axios.get<
+            { timestamp: Date; volumeUst: string; liquidityUst: string }[]
+          >(
+            "https://raw.githubusercontent.com/lbunproject/BASEswap-api-price/main/public/unstaked_plus_hashes.json"
+          )
+          if (Array.isArray(res?.data)) {
+            console.log(res.data)
+            return res.data
+          }
+          throw Error("no data")
+        },
+      },
+    } //return
   }, [dashboardBaseUrl])
 
   return { api }

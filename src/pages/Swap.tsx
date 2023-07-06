@@ -20,6 +20,7 @@ export enum Type {
 const Swap = () => {
   const { isMigrationPage } = useMigration()
   const [searchParams, setSearchParams] = useSearchParams()
+
   const type = searchParams.get("type") as Type
   const tabs = {
     tabs: isMigrationPage
@@ -53,17 +54,28 @@ const Swap = () => {
   }, [type, isMigrationPage])
 
   return (
+    // <h2 style={{color: "#CD6141"}} >Buy $BASE - get 114% APY</h2> <h2 style={{color: "#CD6141"}} >Under Maintenance</h2>
     <Container>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "px",
+          fontSize: "28px",
+        }}
+      >
+        <h1>Automatic LUNC Staking</h1>
+        <h2 style={{ color: "#CD6141", fontSize: "18px" }}>
+          +27.3% (30 Day) | 327.6% APY
+        </h2>
+      </div>
 
-<div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "px", fontSize: "28px"}}>
-      <h1 >LUNC Staking</h1>
-      <h2 style={{color: "#CD6141"}} >APY 113.4%</h2>
-    </div>
-
-<br></br>
+      <br></br>
 
       <SwapPage>
-          <>{type && <SwapForm type={type} tabs={tabs} />}</>
+        <>{type && <SwapForm type={type} tabs={tabs} />}</>
       </SwapPage>
     </Container>
   )

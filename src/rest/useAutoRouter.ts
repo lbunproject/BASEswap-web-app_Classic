@@ -30,7 +30,11 @@ const useAutoRouter = (params: Params) => {
   >([])
   const [simulatedAmounts, setSimulatedAmounts] = useState<number[]>([])
   const [autoRefreshTicker, setAutoRefreshTicker] = useState(false)
-  const profitableQuery = useMemo(() => {
+
+  //temp disable
+  return undefined
+
+  /*
     if (!to || !amount) {
       return undefined
     }
@@ -96,6 +100,7 @@ const useAutoRouter = (params: Params) => {
     return undefined
   }, [to, amount, msgs, simulatedAmounts])
 
+}
   useEffect(() => {
     let isCanceled = false
     const fetchMessages = async () => {
@@ -262,6 +267,8 @@ const useAutoRouter = (params: Params) => {
   }, [amount, from, isLoading, profitableQuery, to, type])
 
   return result
+
+  */
 }
 
 export default useAutoRouter
